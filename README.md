@@ -48,6 +48,8 @@ whoami
 
 ✅ Expected outcome: `whoami` returns `root`
 
+<img width="262" height="76" alt="Screenshot 2026-01-23 at 11 20 14" src="https://github.com/user-attachments/assets/6efba3cc-8b9d-4d89-b958-4187aa0bd578" />
+
 ---
 
 ### Step 2: Create the groups (devops + aws)
@@ -74,6 +76,10 @@ getent group aws
   * last field is group members (empty if none yet)
 
 🐛 **Troubleshooting moment:** I typo’d `groupadd aws`, so only `devops` showed up at first. Re-ran correctly, then verified again.
+
+<img width="346" height="60" alt="Screenshot 2026-01-23 at 11 20 55" src="https://github.com/user-attachments/assets/c5730456-dcf3-4a71-857f-62725dda0663" />
+
+<img width="297" height="43" alt="Screenshot 2026-01-23 at 11 27 53" src="https://github.com/user-attachments/assets/08096b94-b486-42a8-81f0-20ebbb6802f4" />
 
 ✅ Expected outcome: both groups appear in `getent group`
 
@@ -108,7 +114,13 @@ passwd user3
 What I learned during password creation:
 
 * **Blank passwords** are rejected (by design)
+
+<img width="252" height="35" alt="Screenshot 2026-01-23 at 11 21 43" src="https://github.com/user-attachments/assets/0fada5a6-64dd-443a-85e8-242785311d7b" />
+
 * Super-simple patterns like `12345678` get rejected as “too simplistic/systematic”
+
+<img width="622" height="34" alt="Screenshot 2026-01-23 at 11 22 24" src="https://github.com/user-attachments/assets/b330fc04-f6e5-440b-b762-3984cc8ca650" />
+
 * This is enforced via **PAM (Pluggable Authentication Modules)** and password quality checks
 * Adding complexity (like a symbol) makes it pass
 
@@ -117,6 +129,8 @@ What I learned during password creation:
 * `DevOps123!`
 
 ✅ Expected outcome: all 3 users have passwords set successfully
+
+<img width="394" height="35" alt="Screenshot 2026-01-23 at 11 23 00" src="https://github.com/user-attachments/assets/1f441fa1-d3ad-4401-b942-7a77e142ef16" />
 
 ---
 
@@ -153,6 +167,8 @@ Linux often uses **UPG (User Private Groups)**: each user gets a private group n
 
 ✅ Expected outcome: you can read and explain the user entry format
 
+<img width="402" height="61" alt="Screenshot 2026-01-23 at 11 24 04" src="https://github.com/user-attachments/assets/1a75acc2-3da1-421f-b9c2-f5802f97f6a9" />
+
 ---
 
 ### Step 6: Set primary group for user2 + user3 to devops
@@ -178,6 +194,8 @@ id user3
 
 ✅ Expected outcome: `gid=devops` and `groups=devops` (or devops plus others)
 
+<img width="375" height="31" alt="Screenshot 2026-01-23 at 11 26 13" src="https://github.com/user-attachments/assets/5523ceb8-667e-43bc-afdc-c25b5d47e7aa" />
+
 ---
 
 ### Step 7: Add aws as a supplementary group for user1
@@ -198,6 +216,8 @@ id user1
 ```
 
 ✅ Expected outcome: `gid=user1` remains primary, and `groups=` includes both `user1` and `aws`
+
+<img width="429" height="75" alt="Screenshot 2026-01-23 at 11 25 01" src="https://github.com/user-attachments/assets/cadcf831-ab74-44c8-8cce-9c5e7039f436" />
 
 ---
 
@@ -274,6 +294,8 @@ chown user1:devops /dir1
 * Regular users can’t `chown` files “as they please”
 
 ✅ Expected outcome: owner column shows `user1` on all targets
+
+<img width="420" height="74" alt="Screenshot 2026-01-23 at 11 26 55" src="https://github.com/user-attachments/assets/a6cde944-9962-4dc7-9271-02aa6a134d51" />
 
 ---
 
